@@ -36,8 +36,8 @@ class Invoice(Base):
     id = Column(Integer, primary_key=True)
     amount = Column(Float, nullable=False)
     itemlist = relationship("ItemList", order_by="ItemList.id", back_populates="invoice")
-    #def __repr__(self):
-    #    return ("<Invoice(id = {}, Amount = {})>".format(self.id, self.amount))
+    def __repr__(self):
+        return ("<Invoice(id = {}, Amount = {})>".format(self.id, self.amount))
    
 class ItemList(Base):
     __tablename__ = 'itemlist'
@@ -49,8 +49,8 @@ class ItemList(Base):
     
     invoice = relationship("Invoice", back_populates="itemlist")
     
-    #def __repr__(self):
-    #    return ("<ItemList(id = {}, InvoiceId = {}, ItemId = {}, Quantity = {}, Amount = {})>".format(self.id, self.invoice_id, self.item_id, self.quantity, self.amount))
+    def __repr__(self):
+        return ("<ItemList(id = {}, InvoiceId = {}, ItemId = {}, Quantity = {}, Amount = {})>".format(self.id, self.invoice_id, self.item_id, self.quantity, self.amount))
     
 
 engine = create_engine('sqlite:///menuMaker.db')
